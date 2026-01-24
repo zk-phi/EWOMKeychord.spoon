@@ -24,7 +24,9 @@ obj.pending = nil
 
 local function keychordFail ()
   obj.pending.timer:stop()
+  local upEvent = obj.pending.evt:copy():setType(hs.eventtap.event.types.keyUp)
   obj._EWOM.sendSyntheticEvent(obj.pending.evt)
+  obj._EWOM.sendSyntheticEvent(upEvent)
   obj.pending = nil
 end
 
